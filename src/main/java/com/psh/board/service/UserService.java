@@ -13,7 +13,7 @@ public class UserService {
     private UserRepository userRepository;
 
     public UserEntity create(final UserEntity userEntity) {
-        if(userEntity == null || userEntity.getEmail() == null ) {
+        if(userEntity == null) {
             throw new RuntimeException("Invalid arguments");
         }
 
