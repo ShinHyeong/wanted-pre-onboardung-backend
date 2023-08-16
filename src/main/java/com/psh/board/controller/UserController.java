@@ -29,13 +29,9 @@ public class UserController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@RequestBody UserDTO userDTO) {
         try {
-            if(userDTO == null || userDTO.getPassword() == null ) {
-                throw new RuntimeException("Invalid Password value.");
-            }
-
             UserEntity user = UserEntity.builder()
                     .email(userDTO.getEmail())
-                    .password(passwordEncoder.encode(userDTO.getPassword()))
+                    .password(passwordEncoder.encode(userDTO.getPassword())) //암호화하여 저장
                     .build();
 
             UserEntity registeredUser = userService.create(user);
